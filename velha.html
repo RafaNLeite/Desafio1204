@@ -18,16 +18,40 @@
 
         .fundo {
             background: black;
-            float: left;
         }
 
         .vez {
             font-size: 70px;
         }
+
+        .container {
+            display: flex;
+        }
+
+        .botao{
+            height: 10%;
+            width: auto;
+        }
+
+        .esquerda{
+            width: 30%;
+        }
+
+        .direita{
+            width: 30%;
+        }
     </style>
+
     <script>
         var letra = "X";
-        var mostra = "X";
+
+        function mostra() {
+            document.getElementById("mostra").innerHTML = "O";
+        }
+
+        function mostra2() {
+            document.getElementById("mostra").innerHTML = "X";
+        }
 
         function jogar(posicao) {
             var posclicada = document.getElementById(posicao).innerHTML;
@@ -37,10 +61,11 @@
                 document.getElementById(posicao).innerHTML = letra;
                 if (letra == "X") {
                     letra = "O";
+                    mostra();
                 } else {
                     letra = "X";
+                    mostra2();
                 }
-                mostra = letra;
             }
         }
 
@@ -77,28 +102,38 @@
 </head>
 
 <body>
-    <table class="fundo">
+    <div class="container">
+        <div class="esquerda">
+        <table class="fundo">
 
-        <tr>
-            <td align="center" valign="middle" id="pos11" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos12" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos13" class="meio" onclick="jogar(this.id); verificar();"></td>
-        </tr>
+            <tr>
+                <td align="center" valign="middle" id="pos11" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos12" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos13" class="meio" onclick="jogar(this.id); verificar();"></td>
+            </tr>
 
-        <tr>
-            <td align="center" valign="middle" id="pos21" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos22" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos23" class="meio" onclick="jogar(this.id); verificar();"></td>
-        </tr>
+            <tr>
+                <td align="center" valign="middle" id="pos21" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos22" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos23" class="meio" onclick="jogar(this.id); verificar();"></td>
+            </tr>
 
-        <tr>
-            <td align="center" valign="middle" id="pos31" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos32" class="meio" onclick="jogar(this.id); verificar();"></td>
-            <td align="center" valign="middle" id="pos33" class="meio" onclick="jogar(this.id); verificar();"></td>
-        </tr>
+            <tr>
+                <td align="center" valign="middle" id="pos31" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos32" class="meio" onclick="jogar(this.id); verificar();"></td>
+                <td align="center" valign="middle" id="pos33" class="meio" onclick="jogar(this.id); verificar();"></td>
+            </tr>
 
-    </table>
-    <h2>É a vez de:</h2> <h1 class="vez">X</h1>
+        </table>
+
+        <br><input type="button" class="botao" name="limpar" value="Novo jogo" onclick="limpa();" />
+    </div>
+    <div class="direita">
+        <p>É a vez de:</p> <text id="mostra" class="vez">X</text>
+        <script></script>
+        </h1>
+    </div>
+    </div>
 </body>
 
 </html>
