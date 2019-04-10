@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,35 +12,50 @@
             width: 100px;
             height: 100px;
             background: white;
+            font-size: 70px;
+            cursor: pointer;
         }
 
-        .fundo {  
+        .fundo {
             background: black;
         }
-
     </style>
+    <script>
+        var letra = "X";
+
+        function jogar(posicao) { //verificar
+            document.getElementById(posicao).innerHTML = letra;
+            if (letra == "X") {
+                letra = "O";
+            } else {
+                letra = "X";
+            }
+        }
+    </script>
 </head>
+
 <body>
     <table class="fundo">
 
         <tr>
-            <td align="center" valign="middle" id="cel11" class="meio"></td>
-            <td align="center" valign="middle" id="cel12" class="meio"></td>
-            <td align="center" valign="middle" id="cel13" class="meio"></td>
+            <td align="center" valign="middle" id="pos11" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos12" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos13" class="meio" onclick="jogar(this.id)"></td>
         </tr>
 
         <tr>
-            <td align="center" valign="middle" id="cel21" class="meio"></td>
-            <td align="center" valign="middle" id="cel22" class="meio"></td>
-            <td align="center" valign="middle" id="cel23" class="meio"></td>
+            <td align="center" valign="middle" id="pos21" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos22" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos23" class="meio" onclick="jogar(this.id)"></td>
         </tr>
 
         <tr>
-            <td align="center" valign="middle" id="cel31" class="meio"></td>
-            <td align="center" valign="middle" id="cel32" class="meio"></td>
-            <td align="center" valign="middle" id="cel33" class="meio"></td>
+            <td align="center" valign="middle" id="pos31" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos32" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos33" class="meio" onclick="jogar(this.id)"></td>
         </tr>
 
     </table>
 </body>
+
 </html>
