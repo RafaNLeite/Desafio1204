@@ -18,19 +18,53 @@
 
         .fundo {
             background: black;
+            float: left;
+        }
+
+        .vez {
+            font-size: 80px;
         }
     </style>
     <script>
         var letra = "X";
+        var mostra = "X";
 
-        function jogar(posicao) { //verificar
-            document.getElementById(posicao).innerHTML = letra;
-            if (letra == "X") {
-                letra = "O";
+        function jogar(posicao) {
+            var posclicada = document.getElementById(posicao).innerHTML;
+            if (posclicada == "X" || posclicada == "O") {
+                alert("Quadrado já escolhido, escolha outro");
             } else {
-                letra = "X";
+                document.getElementById(posicao).innerHTML = letra;
+                if (letra == "X") {
+                    letra = "O";
+                } else {
+                    letra = "X";
+                }
             }
         }
+
+        function verificar() {
+            p11 = document.getElementById("pos11").innerHTML;
+            p12 = document.getElementById("pos12").innerHTML;
+            p13 = document.getElementById("pos13").innerHTML;
+            p21 = document.getElementById("pos21").innerHTML;
+            p22 = document.getElementById("pos22").innerHTML;
+            p23 = document.getElementById("pos23").innerHTML;
+            p31 = document.getElementById("pos31").innerHTML;
+            p32 = document.getElementById("pos32").innerHTML;
+            p33 = document.getElementById("pos33").innerHTML;
+            if (((p11 != "") && (p12 != "") && (p13 != "") && (p11 == p12) && (p12 == p13)) || ((p11 != "") && (p22 != "") && (p33 != "") && (p11 == p22) && (p22 == p33)) || ((p11 != "") && (p21 != "") && (p31 != "") && (p11 == p21) && (p21 == p31)) || ((p21 != "") && (p22 != "") && (p23 != "") && (p21 == p22) && (p22 == p23)) || ((p31 != "") && (p32 != "") && (p33 != "") && (p31 == p32) && (p32 == p33)) || ((p12 != "") && (p22 != "") && (p32 != "") && (p12 == p22) && (p22 == p32)) || ((p13 != "") && (p23 != "") && (p33 != "") && (p13 == p23) && (p23 == p33)) || ((p31 != "") && (p22 != "") && (p13 != "") && (p31 == p22) && (p22 == p13))) {
+                alert("Você ganhou!");
+            }
+            else if (((p11 == "X") || (p11 == "O")) && ((p12 == "X") || (p12 == "O")) && ((p13 == "X") || (p13 == "O")) && ((p21 == "X") || (p21 == "O")) && ((p22 == "X") || (p22 == "O")) && ((p23 == "X") || (p23 == "O")) && ((p31 == "X") || (p31 == "O")) && ((p32 == "X") || (p32 == "O")) && ((p33 == "X") || (p33 == "O"))) {
+                alert("Deu velha, tentem de novo!");
+            }
+        }
+
+        function mostra(frase){
+            document.write(frase);
+        }
+
     </script>
 </head>
 
@@ -38,21 +72,21 @@
     <table class="fundo">
 
         <tr>
-            <td align="center" valign="middle" id="pos11" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos12" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos13" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos11" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos12" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos13" class="meio" onclick="jogar(this.id); verificar();"></td>
         </tr>
 
         <tr>
-            <td align="center" valign="middle" id="pos21" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos22" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos23" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos21" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos22" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos23" class="meio" onclick="jogar(this.id); verificar();"></td>
         </tr>
 
         <tr>
-            <td align="center" valign="middle" id="pos31" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos32" class="meio" onclick="jogar(this.id)"></td>
-            <td align="center" valign="middle" id="pos33" class="meio" onclick="jogar(this.id)"></td>
+            <td align="center" valign="middle" id="pos31" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos32" class="meio" onclick="jogar(this.id); verificar();"></td>
+            <td align="center" valign="middle" id="pos33" class="meio" onclick="jogar(this.id); verificar();"></td>
         </tr>
 
     </table>
