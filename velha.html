@@ -22,7 +22,7 @@
         }
 
         .vez {
-            font-size: 80px;
+            font-size: 70px;
         }
     </style>
     <script>
@@ -40,6 +40,16 @@
                 } else {
                     letra = "X";
                 }
+                mostra = letra;
+            }
+        }
+
+        function limpa() {
+            for (i = 1; i < 4; i++) {
+                for (j = 1; j < 4; j++) {
+                    var nomepos = "pos" + i + j
+                    document.getElementById(nomepos).innerHTML = "";
+                }
             }
         }
 
@@ -55,14 +65,12 @@
             p33 = document.getElementById("pos33").innerHTML;
             if (((p11 != "") && (p12 != "") && (p13 != "") && (p11 == p12) && (p12 == p13)) || ((p11 != "") && (p22 != "") && (p33 != "") && (p11 == p22) && (p22 == p33)) || ((p11 != "") && (p21 != "") && (p31 != "") && (p11 == p21) && (p21 == p31)) || ((p21 != "") && (p22 != "") && (p23 != "") && (p21 == p22) && (p22 == p23)) || ((p31 != "") && (p32 != "") && (p33 != "") && (p31 == p32) && (p32 == p33)) || ((p12 != "") && (p22 != "") && (p32 != "") && (p12 == p22) && (p22 == p32)) || ((p13 != "") && (p23 != "") && (p33 != "") && (p13 == p23) && (p23 == p33)) || ((p31 != "") && (p22 != "") && (p13 != "") && (p31 == p22) && (p22 == p13))) {
                 alert("Você ganhou!");
+                limpa();
             }
             else if (((p11 == "X") || (p11 == "O")) && ((p12 == "X") || (p12 == "O")) && ((p13 == "X") || (p13 == "O")) && ((p21 == "X") || (p21 == "O")) && ((p22 == "X") || (p22 == "O")) && ((p23 == "X") || (p23 == "O")) && ((p31 == "X") || (p31 == "O")) && ((p32 == "X") || (p32 == "O")) && ((p33 == "X") || (p33 == "O"))) {
                 alert("Deu velha, tentem de novo!");
+                limpa();
             }
-        }
-
-        function mostra(frase){
-            document.write(frase);
         }
 
     </script>
@@ -90,6 +98,7 @@
         </tr>
 
     </table>
+    <h2>É a vez de:</h2> <h1 class="vez">X</h1>
 </body>
 
 </html>
