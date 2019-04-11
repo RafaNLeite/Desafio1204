@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jogo da Velha</title>
+
+    <style type="text/css">
+        .meio {
+            width: 100px;
+            height: 100px;
+            background: white;
+            font-size: 70px;
+            cursor: pointer;
+        }
+
+        .fundo {
+            background: black;
+        }
+
+        .vez {
+            font-size: 70px;
+        }
+
+        .container {
+            width: 302px;
+            height: 300px;
+            border: solid 2px;
+        }
+
+        .botao {
+            height: 10%;
+            width: auto;
+        }
+
+        #jogo {
+            width: 303px;
+            height: 300px;
+            border: solid 3px;
+            text-align: center;
+        }
+
+        .linha {
+            height: 100px;
+            border-bottom: solid 1px;
+        }
+
+        .casa {
+            width: 100px;
+            height: 100%;
+            border-right: solid 1px;
+            font-size: 70px;
+            cursor: pointer;
+            float: left;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+        var letra = "X";
+
+        function mostraO() {
+            document.getElementById("mostra").innerHTML = "O";
+        }
+
+        function mostraX() {
+            document.getElementById("mostra").innerHTML = "X";
+        }
+
+        function jogar(posicao) {
+            var posclicada = document.getElementById(posicao).innerHTML;
+            if (posclicada == "X" || posclicada == "O") {
+                alert("Quadrado já escolhido, escolha outro");
+            } else {
+                document.getElementById(posicao).innerHTML = letra;
+                if (letra == "X") {
+                    letra = "O";
+                    mostraO();
+                } else {
+                    letra = "X";
+                    mostraX();
+                }
+            }
+        }
+
+        function limpa() {
+            for (i = 1; i < 4; i++) {
+                for (j = 1; j < 4; j++) {
+                    var nomepos = "pos" + i + j
+                    document.getElementById(nomepos).innerHTML = "";
+                }
+            }
+        }
+
+        function verificar() {
+            p11 = document.getElementById("pos11").innerHTML;
+            p12 = document.getElementById("pos12").innerHTML;
+            p13 = document.getElementById("pos13").innerHTML;
+            p21 = document.getElementById("pos21").innerHTML;
+            p22 = document.getElementById("pos22").innerHTML;
+            p23 = document.getElementById("pos23").innerHTML;
+            p31 = document.getElementById("pos31").innerHTML;
+            p32 = document.getElementById("pos32").innerHTML;
+            p33 = document.getElementById("pos33").innerHTML;
+            if (((p11 != "") && (p12 != "") && (p13 != "") && (p11 == p12) && (p12 == p13)) || ((p11 != "") && (p22 != "") && (p33 != "") && (p11 == p22) && (p22 == p33)) || ((p11 != "") && (p21 != "") && (p31 != "") && (p11 == p21) && (p21 == p31)) || ((p21 != "") && (p22 != "") && (p23 != "") && (p21 == p22) && (p22 == p23)) || ((p31 != "") && (p32 != "") && (p33 != "") && (p31 == p32) && (p32 == p33)) || ((p12 != "") && (p22 != "") && (p32 != "") && (p12 == p22) && (p22 == p32)) || ((p13 != "") && (p23 != "") && (p33 != "") && (p13 == p23) && (p23 == p33)) || ((p31 != "") && (p22 != "") && (p13 != "") && (p31 == p22) && (p22 == p13))) {
+                alert("Você ganhou!");
+                limpa();
+            }
+            else if (((p11 == "X") || (p11 == "O")) && ((p12 == "X") || (p12 == "O")) && ((p13 == "X") || (p13 == "O")) && ((p21 == "X") || (p21 == "O")) && ((p22 == "X") || (p22 == "O")) && ((p23 == "X") || (p23 == "O")) && ((p31 == "X") || (p31 == "O")) && ((p32 == "X") || (p32 == "O")) && ((p33 == "X") || (p33 == "O"))) {
+                alert("Deu velha, tentem de novo!");
+                limpa();
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div id="jogo">
+        <div class="linha">
+            <div class="casa" id="pos11" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos12" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos13" onclick="jogar(this.id); verificar();"></div>
+        </div>
+        <div class="linha">
+            <div class="casa" id="pos21" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos22" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos23" onclick="jogar(this.id); verificar();"></div>
+        </div>
+        <div class="linha">
+            <div class="casa" id="pos31" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos32" onclick="jogar(this.id); verificar();"></div>
+            <div class="casa" id="pos33" onclick="jogar(this.id); verificar();"></div>
+        </div>
+    </div>
+    <p>É a vez de:</p> <text id="mostra" class="vez">X</text>
+</body>
+</html>
