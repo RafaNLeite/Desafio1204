@@ -8,17 +8,6 @@
     <title>Jogo da Velha</title>
 
     <style type="text/css">
-        .meio {
-            width: 100px;
-            height: 100px;
-            background: white;
-            font-size: 70px;
-            cursor: pointer;
-        }
-
-        .fundo {
-            background: black;
-        }
 
         .vez {
             font-size: 70px;
@@ -134,6 +123,7 @@
             <div class="casa" id="pos32" onclick="jogar(this.id); verificar();"></div>
             <div class="casa" id="pos33" onclick="jogar(this.id); verificar();"></div>
         </div>
+        <input type="button" class="botao" name="limpar" value="Reset" onclick="limpa();" />
     </div>
     <p>É a vez de:</p> <text id="mostra" class="vez">X</text>
 </body>
