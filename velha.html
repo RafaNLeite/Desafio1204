@@ -45,11 +45,11 @@
     <script>
         var letra = "X";
 
-        function mostra() {
+        function mostraO() {
             document.getElementById("mostra").innerHTML = "O";
         }
 
-        function mostra2() {
+        function mostraX() {
             document.getElementById("mostra").innerHTML = "X";
         }
 
@@ -61,10 +61,10 @@
                 document.getElementById(posicao).innerHTML = letra;
                 if (letra == "X") {
                     letra = "O";
-                    mostra();
+                    mostraO();
                 } else {
                     letra = "X";
-                    mostra2();
+                    mostraX();
                 }
             }
         }
@@ -126,7 +126,7 @@
 
         </table>
 
-        <br><input type="button" class="botao" name="limpar" value="Novo jogo" onclick="limpa();" />
+        <br><input type="button" class="botao" name="limpar" value="Reset" onclick="limpa();" />
     </div>
     <div class="direita">
         <p>É a vez de:</p> <text id="mostra" class="vez">X</text>
